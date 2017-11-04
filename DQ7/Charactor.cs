@@ -10,6 +10,8 @@ namespace DQ7
 	class Charactor
 	{
 		public ObservableCollection<CharactorItem> Items { get; set; } = new ObservableCollection<CharactorItem>();
+		public ObservableCollection<CharactorMagic> BattleMagics { get; set; } = new ObservableCollection<CharactorMagic>();
+		public ObservableCollection<CharactorMagic> FieldMagics { get; set; } = new ObservableCollection<CharactorMagic>();
 
 		private readonly uint mAddress;
 
@@ -19,6 +21,12 @@ namespace DQ7
 			for(uint i = 0; i < 12; i++)
 			{
 				Items.Add(new CharactorItem(address + 0x0180 + i * 4));
+			}
+
+			foreach (var magic in Info.Instance().Magics)
+			{
+				BattleMagics.Add(new CharactorMagic(address + 0x00E0, magic.Value) { Name = magic.Name });
+				FieldMagics.Add(new CharactorMagic(address + 0x0100, magic.Value) { Name = magic.Name });
 			}
 		}
 

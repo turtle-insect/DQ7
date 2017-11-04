@@ -7,6 +7,7 @@ namespace DQ7
 	{
 		private static Info mThis;
 		public List<NameValue> Items { get; private set; } = new List<NameValue>();
+		public List<NameValue> Magics { get; private set; } = new List<NameValue>();
 
 		private Info() { }
 
@@ -37,6 +38,7 @@ namespace DQ7
 		private void Init()
 		{
 			AppendList("info\\item.txt", Items);
+			AppendList("info\\magic.txt", Magics);
 		}
 
 		private void AppendList<Type>(String filename, List<Type> items)

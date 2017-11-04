@@ -114,6 +114,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                                 <RowDefinition Height="5*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -122,28 +123,29 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="名前"/>
                             <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="1" Content="レベル"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="2" Content="ちから"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Power, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="3" Content="すばやさ"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Speed, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="4" Content="みのまもり"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Defense, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="5" Content="かしこさ"/>
-                            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Intelligence, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="6" Content="かっこよさ"/>
-                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Cool, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="7" Content="HP"/>
-                            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.HP, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="8" Content="最大HP"/>
-                            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.MaxHP, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="9" Content="MP"/>
-                            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.MP, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="10" Content="最大MP"/>
-                            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.MaxMP, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="11" Content="Ex"/>
-                            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="1" Content="職業"/>
+                            <Label Grid.Row="2" Content="レベル"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="3" Content="ちから"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Power, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="4" Content="すばやさ"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Speed, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="5" Content="みのまもり"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Defense, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="6" Content="かしこさ"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Intelligence, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="7" Content="かっこよさ"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Cool, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="8" Content="HP"/>
+                            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.HP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="9" Content="最大HP"/>
+                            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.MaxHP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="10" Content="MP"/>
+                            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.MP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="11" Content="最大MP"/>
+                            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.MaxMP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="12" Content="Ex"/>
+                            <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                         <ListBox Grid.Column="2" ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Items}">
                             <ListBox.ItemTemplate>
@@ -156,6 +158,32 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
+                        <TabControl Grid.Column="3">
+                            <TabItem Header="戦闘じゅもん">
+                                <ListBox ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.BattleMagics}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Content="{Binding Name}" IsChecked="{Binding Leam}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </TabItem>
+                            <TabItem Header="移動じゅもん">
+                                <ListBox ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.FieldMagics}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Content="{Binding Name}" IsChecked="{Binding Leam}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </TabItem>
+                            <TabItem Header="とくぎ">
+
+                            </TabItem>
+                            <TabItem Header="じゅくれんど">
+
+                            </TabItem>
+                        </TabControl>
                     </Grid>
                 </TabItem>
             </TabControl>

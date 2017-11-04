@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Charactor.cs" />
     <Compile Include="CharactorItem.cs" />
+    <Compile Include="CharactorMagic.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="ILineAnalysis.cs" />
     <Compile Include="Info.cs" />
