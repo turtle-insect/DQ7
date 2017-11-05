@@ -178,7 +178,13 @@
                                 </ListBox>
                             </TabItem>
                             <TabItem Header="とくぎ">
-
+                                <ListBox ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Skills}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Content="{Binding Name}" IsChecked="{Binding Leam}"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </TabItem>
                             <TabItem Header="じゅくれんど">
 

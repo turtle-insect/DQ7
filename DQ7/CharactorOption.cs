@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DQ7
 {
-	class CharactorMagic
+	class CharactorOption
 	{
 		private readonly uint mAddress;
 		private readonly uint mID;
 		public String Name { get; set; }
 
-		public CharactorMagic(uint address, uint id)
+		public CharactorOption(uint address, uint id)
 		{
 			mAddress = address;
 			mID = id;

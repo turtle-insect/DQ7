@@ -10,23 +10,29 @@ namespace DQ7
 	class Charactor
 	{
 		public ObservableCollection<CharactorItem> Items { get; set; } = new ObservableCollection<CharactorItem>();
-		public ObservableCollection<CharactorMagic> BattleMagics { get; set; } = new ObservableCollection<CharactorMagic>();
-		public ObservableCollection<CharactorMagic> FieldMagics { get; set; } = new ObservableCollection<CharactorMagic>();
+		public ObservableCollection<CharactorOption> BattleMagics { get; set; } = new ObservableCollection<CharactorOption>();
+		public ObservableCollection<CharactorOption> FieldMagics { get; set; } = new ObservableCollection<CharactorOption>();
+		public ObservableCollection<CharactorOption> Skills { get; set; } = new ObservableCollection<CharactorOption>();
 
 		private readonly uint mAddress;
 
 		public Charactor(uint address)
 		{
 			mAddress = address;
-			for(uint i = 0; i < 12; i++)
+			for (uint i = 0; i < 12; i++)
 			{
 				Items.Add(new CharactorItem(address + 0x0180 + i * 4));
 			}
 
 			foreach (var magic in Info.Instance().Magics)
 			{
-				BattleMagics.Add(new CharactorMagic(address + 0x00E0, magic.Value) { Name = magic.Name });
-				FieldMagics.Add(new CharactorMagic(address + 0x0100, magic.Value) { Name = magic.Name });
+				BattleMagics.Add(new CharactorOption(address + 0x00E0, magic.Value) { Name = magic.Name });
+				FieldMagics.Add(new CharactorOption(address + 0x0100, magic.Value) { Name = magic.Name });
+			}
+
+			foreach (var skill in Info.Instance().Skills)
+			{
+				Skills.Add(new CharactorOption(address + 0x00EA, skill.Value) { Name = skill.Name });
 			}
 		}
 
@@ -145,6 +151,7 @@ namespace DQ7
 			set
 			{
 				Util.WriteNumber(mAddress + 0x001E, 2, value, 1, 999);
+				Util.WriteNumber(mAddress + 0x0020, 2, value, 1, 999);
 			}
 		}
 
@@ -171,6 +178,7 @@ namespace DQ7
 			set
 			{
 				Util.WriteNumber(mAddress + 0x0024, 2, value, 1, 999);
+				Util.WriteNumber(mAddress + 0x0026, 2, value, 1, 999);
 			}
 		}
 
