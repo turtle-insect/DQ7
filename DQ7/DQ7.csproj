@@ -55,6 +55,7 @@
     <Compile Include="AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BagItem.cs" />
     <Compile Include="Charactor.cs" />
     <Compile Include="CharactorItem.cs" />
     <Compile Include="CharactorOption.cs" />

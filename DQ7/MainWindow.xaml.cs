@@ -102,6 +102,17 @@ namespace DQ7
 			item.Count = dlg.ID == 0 ? 0 : 1U;
 		}
 
+		private void ButtonBagItem_Click(object sender, RoutedEventArgs e)
+		{
+			BagItem item = (sender as Button)?.DataContext as BagItem;
+			if (item == null) return;
+			ItemSelectWindow dlg = new ItemSelectWindow();
+			dlg.ID = item.ID;
+			dlg.ShowDialog();
+			item.Count = dlg.ID == 0 ? 0 : 1U;
+			item.ID = dlg.ID;
+		}
+
 		private void Load(bool force)
 		{
 			OpenFileDialog dlg = new OpenFileDialog();

@@ -11,6 +11,8 @@ namespace DQ7
 		public const uint BaseAddress = 0;
 		public const uint BlockSize = 0x4FD0;
 
+		public const uint BagItemCount = 536;
+
 		public static void WriteNumber(uint address, uint size, uint value, uint min, uint max)
 		{
 			if (value < min) value = min;

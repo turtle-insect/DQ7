@@ -192,6 +192,20 @@
                         </TabControl>
                     </Grid>
                 </TabItem>
+                <TabItem Header="ふくろ">
+                    <ListBox ItemsSource="{Binding Bag}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="個数 : "/>
+                                    <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                    <Button Margin="2,0,0,0" Content=" ... " Click="ButtonBagItem_Click"/>
+                                    <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
             </TabControl>
         </DockPanel>
     </Grid>
