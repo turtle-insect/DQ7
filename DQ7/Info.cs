@@ -9,6 +9,7 @@ namespace DQ7
 		public List<NameValue> Items { get; private set; } = new List<NameValue>();
 		public List<NameValue> Magics { get; private set; } = new List<NameValue>();
 		public List<NameValue> Skills { get; private set; } = new List<NameValue>();
+		public List<NameValue> Party { get; private set; } = new List<NameValue>();
 
 		private Info() { }
 
@@ -22,15 +23,15 @@ namespace DQ7
 			return mThis;
 		}
 
-		public NameValue Item(uint id)
+		public NameValue Search(List<NameValue> list, uint id)
 		{
 			int min = 0;
-			int max = Items.Count;
+			int max = list.Count;
 			for (; min < max;)
 			{
 				int mid = (min + max) / 2;
-				if (Items[mid].Value == id) return Items[mid];
-				else if (Items[mid].Value > id) max = mid;
+				if (list[mid].Value == id) return list[mid];
+				else if (list[mid].Value > id) max = mid;
 				else min = mid + 1;
 			}
 			return null;
@@ -41,6 +42,7 @@ namespace DQ7
 			AppendList("info\\item.txt", Items);
 			AppendList("info\\magic.txt", Magics);
 			AppendList("info\\skill.txt", Skills);
+			AppendList("info\\party.txt", Party);
 		}
 
 		private void AppendList<Type>(String filename, List<Type> items)

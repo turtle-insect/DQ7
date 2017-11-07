@@ -13,6 +13,8 @@ namespace DQ7
 
 		public const uint BagItemCount = 536;
 
+		public const uint PartyMemberCount = 6;
+
 		public static void WriteNumber(uint address, uint size, uint value, uint min, uint max)
 		{
 			if (value < min) value = min;

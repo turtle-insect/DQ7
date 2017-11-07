@@ -67,6 +67,8 @@
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="NameValue.cs" />
+    <Compile Include="PartyConverter.cs" />
+    <Compile Include="PartyMember.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
     <Page Include="AboutWindow.xaml">

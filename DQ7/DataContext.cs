@@ -9,8 +9,10 @@ namespace DQ7
 {
 	class DataContext
 	{
+		public Info Info { get; set; } = Info.Instance();
 		public ObservableCollection<Charactor> Charactors { get; set; } = new ObservableCollection<Charactor>();
 		public ObservableCollection<BagItem> Bag { get; set; } = new ObservableCollection<BagItem>();
+		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
 
 		public DataContext()
 		{
@@ -25,6 +27,11 @@ namespace DQ7
 				item = new BagItem(0x0544 + i * 2, 0x09D4 + i, item);
 				item.PropertyChanged += Item_PropertyChanged;
 				Bag.Insert(0, item);
+			}
+
+			for (uint i = 0; i < Util.PartyMemberCount; i++)
+			{
+				Party.Add(new PartyMember(0x0510 + i * 4));
 			}
 		}
 

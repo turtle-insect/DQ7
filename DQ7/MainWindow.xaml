@@ -11,6 +11,7 @@
     <Grid>
         <Grid.Resources>
             <local:ItemConverter x:Key="ItemConverter"/>
+            <local:PartyConverter x:Key="PartyConverter"/>
         </Grid.Resources>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -205,6 +206,23 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                </TabItem>
+                <TabItem Header="パーティー">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16*"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="ListBoxParty" ItemsSource="{Binding Party}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding ID, Converter={StaticResource PartyConverter}}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <ComboBox Grid.Row="1" ItemsSource="{Binding Info.Party}" DisplayMemberPath="Name"
+                                  SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.ID}"/>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </DockPanel>
