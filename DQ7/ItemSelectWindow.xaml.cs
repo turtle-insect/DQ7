@@ -31,7 +31,7 @@ namespace DQ7
 			CreateItemList("");
 			foreach (var item in ListBoxItem.Items)
 			{
-				NameValue info = item as NameValue;
+				NameValueInfo info = item as NameValueInfo;
 				if (info.Value == ID)
 				{
 					ListBoxItem.SelectedItem = item;
@@ -53,7 +53,7 @@ namespace DQ7
 
 		private void ButtonDecision_Click(object sender, RoutedEventArgs e)
 		{
-			NameValue info = ListBoxItem.SelectedItem as NameValue;
+			NameValueInfo info = ListBoxItem.SelectedItem as NameValueInfo;
 			if (info == null) return;
 			ID = info.Value;
 			Close();

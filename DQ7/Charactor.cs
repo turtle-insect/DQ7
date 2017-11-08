@@ -50,6 +50,19 @@ namespace DQ7
 			}
 		}
 
+		public uint Job
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mAddress + 0x0038, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(mAddress + 0x0038, 1, value);
+			}
+		}
+
 		public uint Lv
 		{
 			get

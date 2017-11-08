@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DQ7
 {
-	class NameValue : ILineAnalysis
+	class NameValueInfo : ILineAnalysis
 	{
 		public uint Value { get; private set; }
 		public String Name { get; private set; }

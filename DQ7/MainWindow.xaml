@@ -120,11 +120,12 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <Label Content="名前"/>
                             <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Grid.Row="1" Content="職業"/>
+                            <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Info.Jobs}" SelectedIndex="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Job}" DisplayMemberPath="Name"/>
                             <Label Grid.Row="2" Content="レベル"/>
                             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Grid.Row="3" Content="ちから"/>

@@ -6,10 +6,11 @@ namespace DQ7
 	class Info
 	{
 		private static Info mThis;
-		public List<NameValue> Items { get; private set; } = new List<NameValue>();
-		public List<NameValue> Magics { get; private set; } = new List<NameValue>();
-		public List<NameValue> Skills { get; private set; } = new List<NameValue>();
-		public List<NameValue> Party { get; private set; } = new List<NameValue>();
+		public List<NameValueInfo> Items { get; private set; } = new List<NameValueInfo>();
+		public List<NameValueInfo> Magics { get; private set; } = new List<NameValueInfo>();
+		public List<NameValueInfo> Skills { get; private set; } = new List<NameValueInfo>();
+		public List<NameValueInfo> Party { get; private set; } = new List<NameValueInfo>();
+		public List<JobInfo> Jobs { get; private set; } = new List<JobInfo>();
 
 		private Info() { }
 
@@ -23,7 +24,7 @@ namespace DQ7
 			return mThis;
 		}
 
-		public NameValue Search(List<NameValue> list, uint id)
+		public NameValueInfo Search(List<NameValueInfo> list, uint id)
 		{
 			int min = 0;
 			int max = list.Count;
@@ -43,6 +44,7 @@ namespace DQ7
 			AppendList("info\\magic.txt", Magics);
 			AppendList("info\\skill.txt", Skills);
 			AppendList("info\\party.txt", Party);
+			AppendList("info\\job.txt", Jobs);
 		}
 
 		private void AppendList<Type>(String filename, List<Type> items)
