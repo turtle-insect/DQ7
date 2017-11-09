@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:DQ7"
         mc:Ignorable="d"
         Title="DQ7 セーブデータ改造(Nintendo 3DS)" Height="650" Width="800"
@@ -98,7 +99,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="280"/>
                         </Grid.ColumnDefinitions>
                         <ListBox x:Name="ListBoxCharactor" ItemsSource="{Binding Charactors}" DisplayMemberPath="Name"/>
                         <Grid Grid.Column="1">
@@ -189,7 +190,32 @@
                                 </ListBox>
                             </TabItem>
                             <TabItem Header="じゅくれんど">
-
+                                <ListBox ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Jobs}">
+                                    <ListBox.Resources>
+                                        <x:Array x:Key="JobStars" Type="{x:Type System:String}">
+                                            <System:String>0</System:String>
+                                            <System:String>1</System:String>
+                                            <System:String>2</System:String>
+                                            <System:String>3</System:String>
+                                            <System:String>4</System:String>
+                                            <System:String>5</System:String>
+                                            <System:String>6</System:String>
+                                            <System:String>7</System:String>
+                                            <System:String>8</System:String>
+                                        </x:Array>
+                                    </ListBox.Resources>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="{Binding Name}" Width="90"/>
+                                                <Label Content="Lv"/>
+                                                <ComboBox ItemsSource="{StaticResource JobStars}" SelectedIndex="{Binding Lv}"/>
+                                                <Label Content="戦闘数"/>
+                                                <TextBox Text="{Binding Exp, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </TabItem>
                         </TabControl>
                     </Grid>

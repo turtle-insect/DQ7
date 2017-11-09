@@ -13,6 +13,7 @@ namespace DQ7
 		public ObservableCollection<CharactorOption> BattleMagics { get; set; } = new ObservableCollection<CharactorOption>();
 		public ObservableCollection<CharactorOption> FieldMagics { get; set; } = new ObservableCollection<CharactorOption>();
 		public ObservableCollection<CharactorOption> Skills { get; set; } = new ObservableCollection<CharactorOption>();
+		public ObservableCollection<CharactorJob> Jobs { get; set; } = new ObservableCollection<CharactorJob>();
 
 		private readonly uint mAddress;
 
@@ -33,6 +34,12 @@ namespace DQ7
 			foreach (var skill in Info.Instance().Skills)
 			{
 				Skills.Add(new CharactorOption(address + 0x00EA, skill.Value) { Name = skill.Name });
+			}
+
+			foreach (var job in Info.Instance().Jobs)
+			{
+				if (job.ID == 0) continue;
+				Jobs.Add(new CharactorJob(address + job.Lv, address + job.Exp) { Name = job.Name });
 			}
 		}
 
