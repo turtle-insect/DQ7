@@ -71,6 +71,7 @@
     <Compile Include="NameValueInfo.cs" />
     <Compile Include="PartyConverter.cs" />
     <Compile Include="PartyMember.cs" />
+    <Compile Include="Place.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
     <Page Include="AboutWindow.xaml">

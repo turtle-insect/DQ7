@@ -12,6 +12,7 @@ namespace DQ7
 		public Info Info { get; set; } = Info.Instance();
 		public ObservableCollection<Charactor> Charactors { get; set; } = new ObservableCollection<Charactor>();
 		public ObservableCollection<BagItem> Bag { get; set; } = new ObservableCollection<BagItem>();
+		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
 
 		public DataContext()
@@ -27,6 +28,11 @@ namespace DQ7
 				item = new BagItem(0x0544 + i * 2, 0x09D4 + i, item);
 				item.PropertyChanged += Item_PropertyChanged;
 				Bag.Insert(0, item);
+			}
+
+			foreach (var place in Info.Instance().Places)
+			{
+				Places.Add(new Place(place.Value) { Name = place.Name });
 			}
 
 			for (uint i = 0; i < Util.PartyMemberCount; i++)
