@@ -13,6 +13,7 @@ namespace DQ7
 		public ObservableCollection<Charactor> Charactors { get; set; } = new ObservableCollection<Charactor>();
 		public ObservableCollection<BagItem> Bag { get; set; } = new ObservableCollection<BagItem>();
 		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
+		public ObservableCollection<Monster> Monsters { get; set; } = new ObservableCollection<Monster>();
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
 
 		public DataContext()
@@ -33,6 +34,11 @@ namespace DQ7
 			foreach (var place in Info.Instance().Places)
 			{
 				Places.Add(new Place(place.Value) { Name = place.Name });
+			}
+
+			foreach (var monster in Info.Instance().Monsters)
+			{
+				Monsters.Add(new Monster(0x1854 + (monster.Value - 1) * 8) { Name = monster.Name });
 			}
 
 			for (uint i = 0; i < Util.PartyMemberCount; i++)

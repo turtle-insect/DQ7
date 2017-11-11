@@ -68,6 +68,7 @@
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="JobInfo.cs" />
+    <Compile Include="Monster.cs" />
     <Compile Include="NameValueInfo.cs" />
     <Compile Include="PartyConverter.cs" />
     <Compile Include="PartyMember.cs" />
