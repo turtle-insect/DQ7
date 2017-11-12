@@ -10,14 +10,22 @@ namespace DQ7
 	class DataContext
 	{
 		public Info Info { get; set; } = Info.Instance();
+		public List<PassingSlateMonsterInfo> PassingSlateMonsters { get; set; } = new List<PassingSlateMonsterInfo>();
 		public ObservableCollection<Charactor> Charactors { get; set; } = new ObservableCollection<Charactor>();
 		public ObservableCollection<BagItem> Bag { get; set; } = new ObservableCollection<BagItem>();
 		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
 		public ObservableCollection<Monster> Monsters { get; set; } = new ObservableCollection<Monster>();
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
+		public ObservableCollection<PassingSlate> PassingSlates { get; set; } = new ObservableCollection<PassingSlate>();
 
 		public DataContext()
 		{
+			foreach (var monster in Info.Instance().Monsters)
+			{
+				if (monster.Value > 282) break;
+				PassingSlateMonsters.Add(new PassingSlateMonsterInfo() { ID = monster.Value, Name = monster.Name });
+			}
+
 			for (uint i = 0; i < 6; i++)
 			{
 				Charactors.Add(new Charactor(0x0C80 + i * 0x01EC));
@@ -44,6 +52,13 @@ namespace DQ7
 			for (uint i = 0; i < Util.PartyMemberCount; i++)
 			{
 				Party.Add(new PartyMember(0x0510 + i * 4));
+			}
+
+			for (uint i = 0; i < Util.PassingSlateCount; i++)
+			{
+				uint address = 0x32D0 + i * 44;
+				if (SaveData.Instance().ReadNumber(address, 1) == 0) break;
+				PassingSlates.Add(new PassingSlate(address));
 			}
 		}
 

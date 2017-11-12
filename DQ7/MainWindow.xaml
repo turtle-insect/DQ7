@@ -279,6 +279,99 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </TabItem>
+                <TabItem Header="すれちがい石板">
+                    <TabControl>
+                        <TabItem Header="じぶんの石板">
+                            <DockPanel>
+                                <CheckBox DockPanel.Dock="Top" x:Name="CheckBoxPassingSlate" Content="上級者向け"/>
+                                <ListBox ItemsSource="{Binding PassingSlates}">
+                                    <ListBox.Resources>
+                                        <x:Array x:Key="MonsterOptions" Type="{x:Type System:String}">
+                                            <System:String>0</System:String>
+                                            <System:String>1</System:String>
+                                            <System:String>2</System:String>
+                                        </x:Array>
+                                    </ListBox.Resources>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Content="リーダー"/>
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                    <Label Content="Lv"/>
+                                                    <TextBox Text="{Binding Leader.Lv, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <Label Content="種別"/>
+                                                    <ComboBox Grid.Column="1"
+                                                  ItemsSource="{Binding Path=DataContext.PassingSlateMonsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                                  DisplayMemberPath="Name" SelectedIndex="{Binding Leader.Kind}" Width="120"/>
+                                                    <ComboBox ItemsSource="{StaticResource MonsterOptions}" SelectedIndex="{Binding Leader.Option}"/>
+                                                </StackPanel>
+                                                <Label Grid.Row="1" Content="お供1"/>
+                                                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                                                    <Label Content="Lv"/>
+                                                    <TextBox Text="{Binding Companion1.Lv, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
+                                                    <Label Content="種別"/>
+                                                    <ComboBox Grid.Column="1"
+                                                  ItemsSource="{Binding Path=DataContext.PassingSlateMonsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                                  DisplayMemberPath="Name" SelectedIndex="{Binding Companion1.Kind}" Width="120"/>
+                                                    <ComboBox ItemsSource="{StaticResource MonsterOptions}" SelectedIndex="{Binding Companion1.Option}"/>
+                                                </StackPanel>
+                                                <Label Grid.Row="2" Content="お供2"/>
+                                                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                                                    <Label Content="Lv"/>
+                                                    <TextBox Text="{Binding Companion2.Lv, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+                                                    <Label Content="種別"/>
+                                                    <ComboBox Grid.Column="1"
+                                                  ItemsSource="{Binding Path=DataContext.PassingSlateMonsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                                  DisplayMemberPath="Name" SelectedIndex="{Binding Companion2.Kind}" Width="120"/>
+                                                    <ComboBox ItemsSource="{StaticResource MonsterOptions}" SelectedIndex="{Binding Companion2.Option}"/>
+                                                </StackPanel>
+                                                <Label Grid.Row="3" Content="ボス"/>
+                                                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                                                    <Label Content="Lv"/>
+                                                    <TextBox Text="{Binding BossLv, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal">
+                                                    <Label Content="撃破"/>
+                                                    <TextBox Text="{Binding Capture, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                                    <Label Content="回"/>
+                                                </StackPanel>
+                                                <Label Grid.Row="4" Content="石板"/>
+                                                <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" IsEnabled="{Binding ElementName=CheckBoxPassingSlate, Path=IsChecked}">
+                                                    <Label Content="ヘッダ"/>
+                                                    <TextBox Text="{Binding SlateHeader, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" IsEnabled="{Binding ElementName=CheckBoxPassingSlate, Path=IsChecked}">
+                                                    <Label Content="フッタ"/>
+                                                    <TextBox Text="{Binding SlateFooter, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </DockPanel>
+                        </TabItem>
+                        <TabItem Header="もらった石板">
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
             </TabControl>
         </DockPanel>
     </Grid>

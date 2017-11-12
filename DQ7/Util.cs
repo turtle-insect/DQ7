@@ -15,6 +15,8 @@ namespace DQ7
 
 		public const uint PartyMemberCount = 6;
 
+		public const uint PassingSlateCount = 16;
+
 		public static void WriteNumber(uint address, uint size, uint value, uint min, uint max)
 		{
 			if (value < min) value = min;
