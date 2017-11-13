@@ -17,6 +17,8 @@ namespace DQ7
 
 		public const uint PassingSlateCount = 16;
 
+		public const uint MonsterStampCount = 417;
+
 		public static void WriteNumber(uint address, uint size, uint value, uint min, uint max)
 		{
 			if (value < min) value = min;

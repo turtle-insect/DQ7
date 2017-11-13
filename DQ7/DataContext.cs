@@ -15,17 +15,12 @@ namespace DQ7
 		public ObservableCollection<BagItem> Bag { get; set; } = new ObservableCollection<BagItem>();
 		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
 		public ObservableCollection<Monster> Monsters { get; set; } = new ObservableCollection<Monster>();
+		public ObservableCollection<MonsterStamp> MonsterStamps { get; set; } = new ObservableCollection<MonsterStamp>();
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
 		public ObservableCollection<PassingSlate> PassingSlates { get; set; } = new ObservableCollection<PassingSlate>();
 
 		public DataContext()
 		{
-			foreach (var monster in Info.Instance().Monsters)
-			{
-				if (monster.Value > 282) break;
-				PassingSlateMonsters.Add(new PassingSlateMonsterInfo() { ID = monster.Value, Name = monster.Name });
-			}
-
 			for (uint i = 0; i < 6; i++)
 			{
 				Charactors.Add(new Charactor(0x0C80 + i * 0x01EC));
@@ -46,8 +41,23 @@ namespace DQ7
 
 			foreach (var monster in Info.Instance().Monsters)
 			{
+				if (monster.Value == 0) continue;
 				Monsters.Add(new Monster(0x1854 + (monster.Value - 1) * 8) { Name = monster.Name });
 			}
+
+			foreach (var monster in Info.Instance().Monsters)
+			{
+				if (monster.Value == 0) continue;
+				if (monster.Value > 282) break;
+				PassingSlateMonsters.Add(new PassingSlateMonsterInfo() { ID = monster.Value, Name = monster.Name });
+			}
+
+			/*
+			for (uint i = 0; i < Util.MonsterStampCount; i++)
+			{
+				MonsterStamps.Add(new MonsterStamp(0x2E06 + i * 2));
+			}
+			*/
 
 			for (uint i = 0; i < Util.PartyMemberCount; i++)
 			{
@@ -86,6 +96,19 @@ namespace DQ7
 			set
 			{
 				Util.WriteNumber(0x0528, 4, value, 0, 9999999);
+			}
+		}
+
+		public uint BattleCount
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x1844, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x1844, 4, value, 0, 9999999);
 			}
 		}
 	}

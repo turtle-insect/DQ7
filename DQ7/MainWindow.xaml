@@ -82,6 +82,7 @@
                         <Label Grid.Row="5" Grid.Column="2" Content="時間"/>
                         <Label Grid.Row="6" Grid.Column="2" Content="分"/>
                         <Label Grid.Column="4" Content="せんとう回数"/>
+                        <TextBox Grid.Column="5" Text="{Binding BattleCount, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Column="6" Content="回"/>
                         <Label Grid.Row="1" Grid.Column="4" Content="倒した匹数"/>
                         <Label Grid.Row="1" Grid.Column="6" Content="匹"/>
@@ -274,6 +275,20 @@
                                     <TextBox Text="{Binding Lv, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
                                     <Label Content="仲間になった数"/>
                                     <TextBox Text="{Binding Friend, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="モンスタースタンプ">
+                    <ListBox ItemsSource="{Binding MonsterStamps}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <ComboBox ItemsSource="{Binding Path=DataContext.Info.Monsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                              SelectedIndex="{Binding ID}" DisplayMemberPath="Name" Width="120"/>
+                                    <TextBox Margin="5,0,0,0" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                    <Label Content="匹倒した"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="JobInfo.cs" />
     <Compile Include="Monster.cs" />
+    <Compile Include="MonsterStamp.cs" />
     <Compile Include="NameValueInfo.cs" />
     <Compile Include="PartyConverter.cs" />
     <Compile Include="PartyMember.cs" />
