@@ -79,7 +79,9 @@
                         <Label Grid.Row="4" Content="ぎんこう"/>
                         <Label Grid.Row="4" Grid.Column="2" Content="G"/>
                         <Label Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Center" Content="ぼうけんした時間"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding PlayTimeHour, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="5" Grid.Column="2" Content="時間"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding PlayTimeMinute, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="6" Grid.Column="2" Content="分"/>
                         <Label Grid.Column="4" Content="せんとう回数"/>
                         <TextBox Grid.Column="5" Text="{Binding BattleCount, UpdateSourceTrigger=PropertyChanged}"/>

@@ -111,5 +111,39 @@ namespace DQ7
 				Util.WriteNumber(0x1844, 4, value, 0, 9999999);
 			}
 		}
+
+		public uint PlayTimeHour
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x3250, 4) / 30 / 3600;
+			}
+
+			set
+			{
+				if (value < 0) value = 0;
+				if (value > 999) value = 999;
+				uint time = SaveData.Instance().ReadNumber(0x3250, 4);
+				time %= (30 * 3600);
+				SaveData.Instance().WriteNumber(0x3250, 4, value * 30 * 3600 + time);
+			}
+		}
+
+		public uint PlayTimeMinute
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x3250, 4) / 30 / 60 % 60;
+			}
+
+			set
+			{
+				if (value < 0) value = 0;
+				if (value > 59) value = 59;
+				uint time = SaveData.Instance().ReadNumber(0x3250, 4);
+				time /= (30 * 3600);
+				SaveData.Instance().WriteNumber(0x3250, 4, time * 30 * 3600 + value * 30 * 60);
+			}
+		}
 	}
 }
