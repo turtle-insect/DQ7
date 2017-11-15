@@ -10,11 +10,12 @@ namespace DQ7
 	class DataContext
 	{
 		public Info Info { get; set; } = Info.Instance();
-		public List<PassingSlateMonsterInfo> PassingSlateMonsters { get; set; } = new List<PassingSlateMonsterInfo>();
+		public List<MonsterInfo> PassingSlateMonsters { get; set; } = new List<MonsterInfo>();
+		public List<MonsterInfo> StampMonsters { get; set; } = new List<MonsterInfo>();
 		public ObservableCollection<Charactor> Charactors { get; set; } = new ObservableCollection<Charactor>();
 		public ObservableCollection<BagItem> Bag { get; set; } = new ObservableCollection<BagItem>();
 		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
-		public ObservableCollection<Monster> Monsters { get; set; } = new ObservableCollection<Monster>();
+		public ObservableCollection<MonsterBook> Monsters { get; set; } = new ObservableCollection<MonsterBook>();
 		public ObservableCollection<MonsterStamp> MonsterStamps { get; set; } = new ObservableCollection<MonsterStamp>();
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
 		public ObservableCollection<PassingSlate> PassingSlates { get; set; } = new ObservableCollection<PassingSlate>();
@@ -41,23 +42,15 @@ namespace DQ7
 
 			foreach (var monster in Info.Instance().Monsters)
 			{
-				if (monster.Value == 0) continue;
-				Monsters.Add(new Monster(0x1854 + (monster.Value - 1) * 8) { Name = monster.Name });
+				if (monster.ID != 0) Monsters.Add(new MonsterBook(0x1854 + (monster.ID - 1) * 8) { Name = monster.Name });
+				if (monster.Passing) PassingSlateMonsters.Add(monster);
+				if (monster.Stamp) StampMonsters.Add(monster);
 			}
 
-			foreach (var monster in Info.Instance().Monsters)
-			{
-				if (monster.Value == 0) continue;
-				if (monster.Value > 282) break;
-				PassingSlateMonsters.Add(new PassingSlateMonsterInfo() { ID = monster.Value, Name = monster.Name });
-			}
-
-			/*
 			for (uint i = 0; i < Util.MonsterStampCount; i++)
 			{
 				MonsterStamps.Add(new MonsterStamp(0x2E06 + i * 2));
 			}
-			*/
 
 			for (uint i = 0; i < Util.PartyMemberCount; i++)
 			{

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DQ7
 {
-	class Monster
+	class MonsterBook
 	{
 		private readonly uint mAddress;
 		public String Name { get; set; }
 
-		public Monster(uint address)
+		public MonsterBook(uint address)
 		{
 			mAddress = address;
 		}

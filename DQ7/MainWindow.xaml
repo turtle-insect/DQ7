@@ -13,6 +13,7 @@
         <Grid.Resources>
             <local:ItemConverter x:Key="ItemConverter"/>
             <local:PartyConverter x:Key="PartyConverter"/>
+            <local:MonsterStampConverter x:Key="MonsterStampConverter"/>
         </Grid.Resources>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -287,8 +288,8 @@
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <ComboBox ItemsSource="{Binding Path=DataContext.Info.Monsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
-                                              SelectedIndex="{Binding ID}" DisplayMemberPath="Name" Width="120"/>
+                                    <ComboBox ItemsSource="{Binding Path=DataContext.StampMonsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                              SelectedIndex="{Binding ID, Converter={StaticResource MonsterStampConverter}}" DisplayMemberPath="Name" Width="120"/>
                                     <TextBox Margin="5,0,0,0" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
                                     <Label Content="匹倒した"/>
                                 </StackPanel>

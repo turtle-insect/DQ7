@@ -11,7 +11,7 @@ namespace DQ7
 		public List<NameValueInfo> Skills { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Party { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Places { get; private set; } = new List<NameValueInfo>();
-		public List<NameValueInfo> Monsters { get; private set; } = new List<NameValueInfo>();
+		public List<MonsterInfo> Monsters { get; private set; } = new List<MonsterInfo>();
 		public List<JobInfo> Jobs { get; private set; } = new List<JobInfo>();
 
 		private Info() { }

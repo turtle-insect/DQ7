@@ -68,13 +68,14 @@
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="JobInfo.cs" />
-    <Compile Include="Monster.cs" />
+    <Compile Include="MonsterBook.cs" />
+    <Compile Include="MonsterInfo.cs" />
     <Compile Include="MonsterStamp.cs" />
+    <Compile Include="MonsterStampConverter.cs" />
     <Compile Include="NameValueInfo.cs" />
     <Compile Include="PartyConverter.cs" />
     <Compile Include="PartyMember.cs" />
     <Compile Include="PassingSlate.cs" />
-    <Compile Include="PassingSlateMonsterInfo.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Util.cs" />
