@@ -15,6 +15,7 @@ namespace DQ7
 		public ObservableCollection<Charactor> Charactors { get; set; } = new ObservableCollection<Charactor>();
 		public ObservableCollection<BagItem> Bag { get; set; } = new ObservableCollection<BagItem>();
 		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
+		public ObservableCollection<TownMonster> TownMonsters { get; set; } = new ObservableCollection<TownMonster>();
 		public ObservableCollection<MonsterBook> Monsters { get; set; } = new ObservableCollection<MonsterBook>();
 		public ObservableCollection<MonsterStamp> MonsterStamps { get; set; } = new ObservableCollection<MonsterStamp>();
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
@@ -62,6 +63,11 @@ namespace DQ7
 				uint address = 0x32D0 + i * 44;
 				if (SaveData.Instance().ReadNumber(address, 1) == 0) break;
 				PassingSlates.Add(new PassingSlate(address));
+			}
+
+			foreach (var monster in Info.Instance().TownMonsters)
+			{
+				TownMonsters.Add(new TownMonster(0x01E9, monster.Value) { Name = monster.Name });
 			}
 		}
 
@@ -136,6 +142,45 @@ namespace DQ7
 				uint time = SaveData.Instance().ReadNumber(0x3250, 4);
 				time /= (30 * 3600);
 				SaveData.Instance().WriteNumber(0x3250, 4, time * 30 * 3600 + value * 30 * 60);
+			}
+		}
+
+		public bool TownMonsterInit
+		{
+			get
+			{
+				return SaveData.Instance().ReadBit(0x01E8, 4);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteBit(0x01E8, 4, value);
+			}
+		}
+
+		public bool TownMonsterLook
+		{
+			get
+			{
+				return SaveData.Instance().ReadBit(0x01E8, 5);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteBit(0x01E8, 5, value);
+			}
+		}
+
+		public bool TownMonsterStart
+		{
+			get
+			{
+				return SaveData.Instance().ReadBit(0x01E8, 6);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteBit(0x01E8, 6, value);
 			}
 		}
 	}

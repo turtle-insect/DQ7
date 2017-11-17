@@ -390,6 +390,32 @@
                         </TabItem>
                     </TabControl>
                 </TabItem>
+                <TabItem Header="移民の町">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+                            <CheckBox Content="依頼を受ける" IsChecked="{Binding TownMonsterInit}"/>
+                            <CheckBox Content="スラランを見つける" IsChecked="{Binding TownMonsterLook}"/>
+                            <CheckBox Content="他のモンスターを集める" IsChecked="{Binding TownMonsterStart}"/>
+                        </StackPanel>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ListBox ItemsSource="{Binding TownMonsters}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding Exist}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </Grid>
+                </TabItem>
             </TabControl>
         </DockPanel>
     </Grid>

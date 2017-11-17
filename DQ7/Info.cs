@@ -11,6 +11,7 @@ namespace DQ7
 		public List<NameValueInfo> Skills { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Party { get; private set; } = new List<NameValueInfo>();
 		public List<NameValueInfo> Places { get; private set; } = new List<NameValueInfo>();
+		public List<NameValueInfo> TownMonsters { get; private set; } = new List<NameValueInfo>();
 		public List<MonsterInfo> Monsters { get; private set; } = new List<MonsterInfo>();
 		public List<JobInfo> Jobs { get; private set; } = new List<JobInfo>();
 
@@ -47,6 +48,7 @@ namespace DQ7
 			AppendList("info\\skill.txt", Skills);
 			AppendList("info\\party.txt", Party);
 			AppendList("info\\place.txt", Places);
+			AppendList("info\\town.txt", TownMonsters);
 			AppendList("info\\monster.txt", Monsters);
 			AppendList("info\\job.txt", Jobs);
 		}
