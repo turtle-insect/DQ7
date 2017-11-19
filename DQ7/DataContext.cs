@@ -18,6 +18,7 @@ namespace DQ7
 		public ObservableCollection<TownMonster> TownMonsters { get; set; } = new ObservableCollection<TownMonster>();
 		public ObservableCollection<MonsterBook> Monsters { get; set; } = new ObservableCollection<MonsterBook>();
 		public ObservableCollection<MonsterStamp> MonsterStamps { get; set; } = new ObservableCollection<MonsterStamp>();
+		public ObservableCollection<MonsterParkDormitory> MonsterParkDormitorys { get; set; } = new ObservableCollection<MonsterParkDormitory>();
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
 		public ObservableCollection<PassingSlate> PassingSlates { get; set; } = new ObservableCollection<PassingSlate>();
 
@@ -51,6 +52,11 @@ namespace DQ7
 			for (uint i = 0; i < Util.MonsterStampCount; i++)
 			{
 				MonsterStamps.Add(new MonsterStamp(0x2E06 + i * 2));
+			}
+
+			for (uint i = 0; i < Util.MonsterParkDormitoryCount; i++)
+			{
+				MonsterParkDormitorys.Add(new MonsterParkDormitory(0x04BC + i * 4, 0x3180 + i));
 			}
 
 			for (uint i = 0; i < Util.PartyMemberCount; i++)
@@ -145,7 +151,7 @@ namespace DQ7
 			}
 		}
 
-		public bool TownMonsterInit
+		public bool MonsterTownInit
 		{
 			get
 			{
@@ -158,7 +164,7 @@ namespace DQ7
 			}
 		}
 
-		public bool TownMonsterLook
+		public bool MonsterTownLook
 		{
 			get
 			{
@@ -171,7 +177,7 @@ namespace DQ7
 			}
 		}
 
-		public bool TownMonsterStart
+		public bool MonsterTownStart
 		{
 			get
 			{

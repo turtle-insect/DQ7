@@ -264,38 +264,31 @@
                                   SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.ID}"/>
                     </Grid>
                 </TabItem>
-                <TabItem Header="モンスター図鑑">
-                    <ListBox ItemsSource="{Binding Monsters}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Label Content="{Binding Name}" Width="120"/>
-                                    <Label Content="倒した数"/>
-                                    <TextBox Text="{Binding Kill, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
-                                    <Label Content="アイテム数"/>
-                                    <TextBox Text="{Binding Item, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
-                                    <Label Content="Lv"/>
-                                    <TextBox Text="{Binding Lv, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
-                                    <Label Content="仲間になった数"/>
-                                    <TextBox Text="{Binding Friend, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </TabItem>
-                <TabItem Header="モンスタースタンプ">
-                    <ListBox ItemsSource="{Binding MonsterStamps}">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <ComboBox ItemsSource="{Binding Path=DataContext.StampMonsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
-                                              SelectedIndex="{Binding ID, Converter={StaticResource MonsterStampConverter}}" DisplayMemberPath="Name" Width="120"/>
-                                    <TextBox Margin="5,0,0,0" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
-                                    <Label Content="匹倒した"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                <TabItem Header="移民の町">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+                            <CheckBox Content="依頼を受ける" IsChecked="{Binding MonsterTownInit}"/>
+                            <CheckBox Content="スラランを見つける" IsChecked="{Binding MonsterTownLook}"/>
+                            <CheckBox Content="他のモンスターを集める" IsChecked="{Binding MonsterTownStart}"/>
+                        </StackPanel>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <ListBox ItemsSource="{Binding TownMonsters}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding Exist}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </Grid>
                 </TabItem>
                 <TabItem Header="すれちがい石板">
                     <TabControl>
@@ -390,30 +383,64 @@
                         </TabItem>
                     </TabControl>
                 </TabItem>
-                <TabItem Header="移民の町">
+                <TabItem Header="モンスター図鑑">
+                    <ListBox ItemsSource="{Binding Monsters}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="{Binding Name}" Width="120"/>
+                                    <Label Content="倒した数"/>
+                                    <TextBox Text="{Binding Kill, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                    <Label Content="アイテム数"/>
+                                    <TextBox Text="{Binding Item, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                    <Label Content="Lv"/>
+                                    <TextBox Text="{Binding Lv, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                    <Label Content="仲間になった数"/>
+                                    <TextBox Text="{Binding Friend, UpdateSourceTrigger=PropertyChanged}" Width="50"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="モンスタースタンプ">
+                    <ListBox ItemsSource="{Binding MonsterStamps}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <ComboBox ItemsSource="{Binding Path=DataContext.StampMonsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                              SelectedIndex="{Binding ID, Converter={StaticResource MonsterStampConverter}}" DisplayMemberPath="Name" Width="120"/>
+                                    <TextBox Margin="5,0,0,0" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                    <Label Content="匹倒した"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+                <TabItem Header="モンスターパーク">
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <StackPanel>
-                            <CheckBox Content="依頼を受ける" IsChecked="{Binding TownMonsterInit}"/>
-                            <CheckBox Content="スラランを見つける" IsChecked="{Binding TownMonsterLook}"/>
-                            <CheckBox Content="他のモンスターを集める" IsChecked="{Binding TownMonsterStart}"/>
-                        </StackPanel>
-                        <Grid Grid.Row="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <ListBox ItemsSource="{Binding TownMonsters}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel>
+                            <Label DockPanel.Dock="Top" Content="せいそく図"/>
+                            <ListBox/>
+                        </DockPanel>
+                        <DockPanel Grid.Column="1">
+                            <Label DockPanel.Dock="Top" Content="宿舎"/>
+                            <ListBox ItemsSource="{Binding MonsterParkDormitorys}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <CheckBox Content="{Binding Name}" IsChecked="{Binding Exist}"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox ItemsSource="{Binding Path=DataContext.PassingSlateMonsters, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                                      DisplayMemberPath="Name" Width="120" SelectedIndex="{Binding ID}"/>
+                                            <TextBox Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" Width="40"/>
+                                            <Label Content="匹"/>
+                                        </StackPanel>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
-                        </Grid>
+                        </DockPanel>
                     </Grid>
                 </TabItem>
             </TabControl>
