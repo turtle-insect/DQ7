@@ -71,6 +71,7 @@
     <Compile Include="MonsterBook.cs" />
     <Compile Include="MonsterInfo.cs" />
     <Compile Include="MonsterParkDormitory.cs" />
+    <Compile Include="MonsterParkPlace.cs" />
     <Compile Include="MonsterStamp.cs" />
     <Compile Include="MonsterStampConverter.cs" />
     <Compile Include="NameValueInfo.cs" />
