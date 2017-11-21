@@ -157,6 +157,19 @@ namespace DQ7
 			}
 		}
 
+		public bool Proficiency
+		{
+			get
+			{
+				return SaveData.Instance().ReadBit(0x31A0, 1);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteBit(0x31A0, 1, value);
+			}
+		}
+
 		public bool MonsterTownInit
 		{
 			get

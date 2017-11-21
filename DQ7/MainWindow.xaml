@@ -46,7 +46,12 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition Height="9*"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="4*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -84,6 +89,10 @@
                         <Label Grid.Row="5" Grid.Column="2" Content="時間"/>
                         <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding PlayTimeMinute, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="6" Grid.Column="2" Content="分"/>
+                        <Label Grid.Row="8" Content="ストーリー設定"/>
+                        <Label Grid.Row="9" Content="じゅくれんど表示"/>
+                        <CheckBox Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" IsChecked="{Binding Proficiency}"/>
+
                         <Label Grid.Column="4" Content="せんとう回数"/>
                         <TextBox Grid.Column="5" Text="{Binding BattleCount, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Column="6" Content="回"/>
