@@ -170,6 +170,19 @@ namespace DQ7
 			}
 		}
 
+		public bool PassingSlate
+		{
+			get
+			{
+				return SaveData.Instance().ReadBit(0x4198, 0);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteBit(0x4198, 0, value);
+			}
+		}
+
 		public bool MonsterTownInit
 		{
 			get
