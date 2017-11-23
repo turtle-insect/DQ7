@@ -393,6 +393,17 @@
                                 </ListBox.ItemTemplate>
                             </ListBox>
                         </DockPanel>
+                        <DockPanel Grid.Column="1">
+                            <Label DockPanel.Dock="Top" Content="たにんの石板"/>
+                            <WrapPanel DockPanel.Dock="Top">
+                                <Label Content="石板の数"/>
+                                <TextBox Text="{Binding PassingSlateCount}" Width="40"/>
+                                <Label Content="枚"/>
+                            </WrapPanel>
+                            <ListBox>
+                                
+                            </ListBox>
+                        </DockPanel>
                     </Grid>
                 </TabItem>
                 <TabItem Header="モンスター図鑑">

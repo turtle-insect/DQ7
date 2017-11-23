@@ -170,6 +170,19 @@ namespace DQ7
 			}
 		}
 
+		public uint PassingSlateCount
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x3F14, 1);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x3F14, 1, value, 0, 24);
+			}
+		}
+
 		public bool PassingSlate
 		{
 			get
