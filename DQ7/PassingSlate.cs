@@ -102,13 +102,15 @@ namespace DQ7
 		{
 			get
 			{
-				return (SaveData.Instance().ReadNumber(mAddress + mID * 2, 2) - 1) / 3;
+				return (SaveData.Instance().ReadNumber(mAddress + mID * 2, 2) - 1) / 3 + 1;
 			}
 
 			set
 			{
+				if (value == 0) return;
 				uint option = (SaveData.Instance().ReadNumber(mAddress + mID * 2, 2) - 1) % 3;
-				SaveData.Instance().WriteNumber(mAddress + mID * 2, 2, value * 3 + option + 1);
+				SaveData.Instance().WriteNumber(mAddress + mID * 2, 2, (value - 1) * 3 + option + 1);
+				// reader
 				if(mID==0)
 				{
 					SaveData.Instance().WriteNumber(mAddress + 6, 2, value + 1);

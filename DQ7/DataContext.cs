@@ -123,6 +123,19 @@ namespace DQ7
 			}
 		}
 
+		public uint KillCount
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x1840, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x1840, 4, value, 0, 9999999);
+			}
+		}
+
 		public uint PlayTimeHour
 		{
 			get
