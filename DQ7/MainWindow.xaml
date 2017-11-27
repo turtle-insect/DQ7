@@ -63,6 +63,7 @@
                             <ColumnDefinition Width="50"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="カジノコイン"/>
+                        <TextBox Grid.Column="1" Text="{Binding Casino, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Column="2" Content="枚"/>
                         <Grid Grid.Row="1" Grid.RowSpan="2">
                             <Grid.RowDefinitions>
