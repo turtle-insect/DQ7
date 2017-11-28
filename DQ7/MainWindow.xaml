@@ -99,10 +99,11 @@
                         <Label Grid.Column="4" Content="せんとう回数"/>
                         <TextBox Grid.Column="5" Text="{Binding BattleCount, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Column="6" Content="回"/>
-                        <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding KillCount, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="1" Grid.Column="4" Content="倒した匹数"/>
+                        <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding KillCount, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="1" Grid.Column="6" Content="匹"/>
                         <Label Grid.Row="2" Grid.Column="4" Content="勝利回数"/>
+                        <TextBox Grid.Row="2" Grid.Column="5" Text="{Binding WinCount, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="2" Grid.Column="6" Content="回"/>
                         <Label Grid.Row="3" Grid.Column="4" Content="ターン最大ダメージ"/>
                         <Label Grid.Row="3" Grid.Column="6" Content=""/>

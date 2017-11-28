@@ -149,6 +149,19 @@ namespace DQ7
 			}
 		}
 
+		public uint WinCount
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x1848, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x1848, 4, value, 0, 9999999);
+			}
+		}
+
 		public uint PlayTimeHour
 		{
 			get
