@@ -106,7 +106,7 @@
                         <TextBox Grid.Row="2" Grid.Column="5" Text="{Binding WinCount, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="2" Grid.Column="6" Content="回"/>
                         <Label Grid.Row="3" Grid.Column="4" Content="ターン最大ダメージ"/>
-                        <Label Grid.Row="3" Grid.Column="6" Content=""/>
+                        <TextBox Grid.Row="3" Grid.Column="5" Text="{Binding MaxDamage, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="4" Grid.Column="4" Content="全獲得ゴールド"/>
                         <Label Grid.Row="4" Grid.Column="6" Content="枚"/>
                     </Grid>
