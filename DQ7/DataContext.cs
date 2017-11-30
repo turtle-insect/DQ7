@@ -123,6 +123,19 @@ namespace DQ7
 			}
 		}
 
+		public uint SmallMedal
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x0538, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x0538, 4, value, 0, 9999999);
+			}
+		}
+
 		public uint MaxDamage
 		{
 			get

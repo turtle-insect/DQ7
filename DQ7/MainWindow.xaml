@@ -79,6 +79,7 @@
                             <Label Grid.Row="1" Grid.Column="1" Content="所持"/>
                         </Grid>
                         <Label Grid.Row="1" Grid.Column="2" Content="枚"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="2" Grid.Column="2" Content="枚"/>
                         <Label Grid.Row="3" Content="しょじきん"/>
                         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Gold, UpdateSourceTrigger=PropertyChanged}"/>
