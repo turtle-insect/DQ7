@@ -109,6 +109,7 @@
                         <Label Grid.Row="3" Grid.Column="4" Content="ターン最大ダメージ"/>
                         <TextBox Grid.Row="3" Grid.Column="5" Text="{Binding MaxDamage, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="4" Grid.Column="4" Content="全獲得ゴールド"/>
+                        <TextBox Grid.Row="4" Grid.Column="5" Text="{Binding AllGold, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="4" Grid.Column="6" Content="枚"/>
                     </Grid>
                 </TabItem>

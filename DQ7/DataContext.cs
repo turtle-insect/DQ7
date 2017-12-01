@@ -149,6 +149,19 @@ namespace DQ7
 			}
 		}
 
+		public uint AllGold
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x0540, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x0540, 4, value, 0, 9999999);
+			}
+		}
+
 		public uint BattleCount
 		{
 			get
