@@ -78,6 +78,7 @@
                             <Label Grid.Column="1" Content="預けた"/>
                             <Label Grid.Row="1" Grid.Column="1" Content="所持"/>
                         </Grid>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MedalBank, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="1" Grid.Column="2" Content="枚"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="2" Grid.Column="2" Content="枚"/>
@@ -85,6 +86,7 @@
                         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Gold, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="3" Grid.Column="2" Content="G"/>
                         <Label Grid.Row="4" Content="ぎんこう"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Bank, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="4" Grid.Column="2" Content="G"/>
                         <Label Grid.Row="5" Grid.RowSpan="2" VerticalAlignment="Center" Content="ぼうけんした時間"/>
                         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding PlayTimeHour, UpdateSourceTrigger=PropertyChanged}"/>

@@ -110,6 +110,19 @@ namespace DQ7
 			}
 		}
 
+		public uint Bank
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x052C, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x052C, 4, value, 0, 9999999);
+			}
+		}
+
 		public uint Casino
 		{
 			get
@@ -120,6 +133,19 @@ namespace DQ7
 			set
 			{
 				Util.WriteNumber(0x0530, 4, value, 0, 9999999);
+			}
+		}
+
+		public uint MedalBank
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x0534, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(0x0534, 4, value, 0, 9999999);
 			}
 		}
 
