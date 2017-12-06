@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DQ7
 {
-    class MonsterParkPlace
+	class MonsterParkPlace
     {
 		private readonly uint mAddress;
 		private readonly uint mID;

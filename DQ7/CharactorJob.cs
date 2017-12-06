@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DQ7
 {
-    class CharactorJob
+	class CharactorJob
     {
 		private readonly uint mLvAddress;
 		private readonly uint mExpAddress;
