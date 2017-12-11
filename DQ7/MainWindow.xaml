@@ -258,6 +258,12 @@
                 </TabItem>
                 <TabItem Header="ルーラ">
                     <ListBox ItemsSource="{Binding Places}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="全て選択" Click="MenuItemPlaceCheck_Click"/>
+                                <MenuItem Header="全て非選択" Click="MenuItemPlaceUnCheck_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Content="{Binding Name}" IsChecked="{Binding Visit}"/>

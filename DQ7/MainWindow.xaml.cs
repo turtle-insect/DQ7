@@ -80,6 +80,22 @@ namespace DQ7
 			Save();
 		}
 
+		private void MenuItemPlaceCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var place in (DataContext as DataContext)?.Places)
+			{
+				place.Visit = true;
+			}
+		}
+
+		private void MenuItemPlaceUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var place in (DataContext as DataContext)?.Places)
+			{
+				place.Visit = true;
+			}
+		}
+
 		private void ButtonCharactorItem_Click(object sender, RoutedEventArgs e)
 		{
 			CharactorItem item = (sender as Button)?.DataContext as CharactorItem;
