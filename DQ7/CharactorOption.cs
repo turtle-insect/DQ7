@@ -1,11 +1,15 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace DQ7
 {
-	class CharactorOption
+	class CharactorOption : INotifyPropertyChanged
 	{
 		private readonly uint mAddress;
 		private readonly uint mID;
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
 		public String Name { get; set; }
 
 		public CharactorOption(uint address, uint id)
@@ -24,6 +28,7 @@ namespace DQ7
 			set
 			{
 				SaveData.Instance().WriteBit(mAddress + mID / 8, mID % 8, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Leam)));
 			}
 		}
 	}

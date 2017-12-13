@@ -80,6 +80,22 @@ namespace DQ7
 			Save();
 		}
 
+		private void MenuItemBattleMagicCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var magic in (ListBoxCharactor.SelectedItem as Charactor)?.BattleMagics)
+			{
+				magic.Leam = true;
+			}
+		}
+
+		private void MenuItemBattleMagicUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var magic in (ListBoxCharactor.SelectedItem as Charactor)?.BattleMagics)
+			{
+				magic.Leam = false;
+			}
+		}
+
 		private void MenuItemPlaceCheck_Click(object sender, RoutedEventArgs e)
 		{
 			foreach (var place in (DataContext as DataContext)?.Places)

@@ -186,6 +186,12 @@
                         <TabControl Grid.Column="3">
                             <TabItem Header="戦闘じゅもん">
                                 <ListBox ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.BattleMagics}">
+                                    <ListBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="全て選択" Click="MenuItemBattleMagicCheck_Click"/>
+                                            <MenuItem Header="全て非選択" Click="MenuItemBattleMagicUnCheck_Click"/>
+                                        </ContextMenu>
+                                    </ListBox.ContextMenu>
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <CheckBox Content="{Binding Name}" IsChecked="{Binding Leam}"/>
