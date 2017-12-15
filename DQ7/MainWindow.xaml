@@ -201,6 +201,12 @@
                             </TabItem>
                             <TabItem Header="移動じゅもん">
                                 <ListBox ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.FieldMagics}">
+                                    <ListBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="全て選択" Click="MenuItemFieldMagicCheck_Click"/>
+                                            <MenuItem Header="全て非選択" Click="MenuItemFieldMagicUnCheck_Click"/>
+                                        </ContextMenu>
+                                    </ListBox.ContextMenu>
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <CheckBox Content="{Binding Name}" IsChecked="{Binding Leam}"/>
