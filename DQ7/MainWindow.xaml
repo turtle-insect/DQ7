@@ -238,6 +238,12 @@
                                             <System:String>8</System:String>
                                         </x:Array>
                                     </ListBox.Resources>
+                                    <ListBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="最強" Click="MenuItemJobMax_Click"/>
+                                            <MenuItem Header="最弱" Click="MenuItemJobMin_Click"/>
+                                        </ContextMenu>
+                                    </ListBox.ContextMenu>
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">

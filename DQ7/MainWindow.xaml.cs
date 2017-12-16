@@ -112,6 +112,25 @@ namespace DQ7
 			}
 		}
 
+		private void MenuItemJobMax_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var job in (ListBoxCharactor.SelectedItem as Charactor)?.Jobs)
+			{
+				job.Lv = 8;
+				job.Exp = 999;
+			}
+		}
+
+		private void MenuItemJobMin_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var job in (ListBoxCharactor.SelectedItem as Charactor)?.Jobs)
+			{
+				job.Lv = 8;
+				job.Exp = 999;
+			}
+		}
+
+
 		private void MenuItemPlaceCheck_Click(object sender, RoutedEventArgs e)
 		{
 			foreach (var place in (DataContext as DataContext)?.Places)

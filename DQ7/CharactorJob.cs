@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace DQ7
 {
-	class CharactorJob
+	class CharactorJob : INotifyPropertyChanged
     {
 		private readonly uint mLvAddress;
 		private readonly uint mExpAddress;
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public String Name { get; set; }
 
@@ -25,6 +28,7 @@ namespace DQ7
 			set
 			{
 				SaveData.Instance().WriteNumber(mLvAddress, 1, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Lv)));
 			}
 		}
 
@@ -38,6 +42,7 @@ namespace DQ7
 			set
 			{
 				Util.WriteNumber(mExpAddress, 2, value, 0, 999);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Exp)));
 			}
 		}
 	}
