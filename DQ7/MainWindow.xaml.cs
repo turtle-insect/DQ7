@@ -112,6 +112,22 @@ namespace DQ7
 			}
 		}
 
+		private void MenuItemSkillCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var skill in (ListBoxCharactor.SelectedItem as Charactor)?.Skills)
+			{
+				skill.Leam = true;
+			}
+		}
+
+		private void MenuItemSkillUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var skill in (ListBoxCharactor.SelectedItem as Charactor)?.Skills)
+			{
+				skill.Leam = false;
+			}
+		}
+
 		private void MenuItemJobMax_Click(object sender, RoutedEventArgs e)
 		{
 			foreach (var job in (ListBoxCharactor.SelectedItem as Charactor)?.Jobs)

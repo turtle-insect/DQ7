@@ -216,6 +216,12 @@
                             </TabItem>
                             <TabItem Header="とくぎ">
                                 <ListBox ItemsSource="{Binding ElementName=ListBoxCharactor, Path=SelectedItem.Skills}">
+                                    <ListBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="全て選択" Click="MenuItemSkillCheck_Click"/>
+                                            <MenuItem Header="全て非選択" Click="MenuItemSkillUnCheck_Click"/>
+                                        </ContextMenu>
+                                    </ListBox.ContextMenu>
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <CheckBox Content="{Binding Name}" IsChecked="{Binding Leam}"/>
