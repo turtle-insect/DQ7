@@ -146,7 +146,6 @@ namespace DQ7
 			}
 		}
 
-
 		private void MenuItemPlaceCheck_Click(object sender, RoutedEventArgs e)
 		{
 			foreach (var place in (DataContext as DataContext)?.Places)
@@ -160,6 +159,22 @@ namespace DQ7
 			foreach (var place in (DataContext as DataContext)?.Places)
 			{
 				place.Visit = true;
+			}
+		}
+
+		private void MenuItemTownMonsterCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var monster in (DataContext as DataContext)?.TownMonsters)
+			{
+				monster.Exist = true;
+			}
+		}
+
+		private void MenuItemTownMonsterUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var monster in (DataContext as DataContext)?.TownMonsters)
+			{
+				monster.Exist = false;
 			}
 		}
 

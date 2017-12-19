@@ -329,6 +329,12 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <ListBox ItemsSource="{Binding TownMonsters}">
+                                <ListBox.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="全て選択" Click="MenuItemTownMonsterCheck_Click"/>
+                                        <MenuItem Header="全て非選択" Click="MenuItemTownMonsterUnCheck_Click"/>
+                                    </ContextMenu>
+                                </ListBox.ContextMenu>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <CheckBox Content="{Binding Name}" IsChecked="{Binding Exist}"/>
