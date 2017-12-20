@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace DQ7
 {
-	class MonsterParkPlace
+	class MonsterParkPlace : INotifyPropertyChanged
     {
 		private readonly uint mAddress;
 		private readonly uint mID;
+
+		public event PropertyChangedEventHandler PropertyChanged;
 
 		public String Name { get; set; }
 
@@ -25,6 +28,7 @@ namespace DQ7
 			set
 			{
 				SaveData.Instance().WriteBit(mAddress + (mID + 4) / 8, (mID + 4) % 8, value);
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Exist)));
 			}
 		}
 	}

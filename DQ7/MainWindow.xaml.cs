@@ -177,6 +177,21 @@ namespace DQ7
 				monster.Exist = false;
 			}
 		}
+		private void MenuItemMonsterParkPlaceCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var place in (DataContext as DataContext)?.MonsterParkPlaces)
+			{
+				place.Exist = true;
+			}
+		}
+
+		private void MenuItemMonsterParkPlaceUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var place in (DataContext as DataContext)?.MonsterParkPlaces)
+			{
+				place.Exist = false;
+			}
+		}
 
 		private void ButtonCharactorItem_Click(object sender, RoutedEventArgs e)
 		{

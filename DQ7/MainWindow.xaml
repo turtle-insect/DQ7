@@ -491,6 +491,12 @@
                         <DockPanel>
                             <Label DockPanel.Dock="Top" Content="せいそく図"/>
                             <ListBox ItemsSource="{Binding MonsterParkPlaces}">
+                                <ListBox.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="全て選択" Click="MenuItemMonsterParkPlaceCheck_Click"/>
+                                        <MenuItem Header="全て非選択" Click="MenuItemMonsterParkPlaceUnCheck_Click"/>
+                                    </ContextMenu>
+                                </ListBox.ContextMenu>
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <CheckBox Content="{Binding Name}" IsChecked="{Binding Exist}"/>
