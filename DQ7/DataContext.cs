@@ -180,7 +180,7 @@ namespace DQ7
 
 			set
 			{
-				Util.WriteNumber(0x0540, 4, value, 0, 9999999);
+				Util.WriteNumber(0x0540, 4, value, 0, 99999999);
 			}
 		}
 
