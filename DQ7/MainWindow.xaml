@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:DQ7"
+		xmlns:prop="clr-namespace:DQ7.Properties"
         mc:Ignorable="d"
         Title="DQ7 セーブデータ改造(Nintendo 3DS)" Height="650" Width="800"
         WindowStartupLocation="CenterScreen"
+		Closed="Window_Closed"
         AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver">
     <Grid>
         <Grid.Resources>
@@ -34,7 +36,13 @@
                 <Button Width="32" Height="32" Click="ToolBarFileSave_Click" ToolTip="保存">
                     <Image Source="{StaticResource Save}"/>
                 </Button>
-            </ToolBar>
+				<TextBox Text="device"/>
+				<ComboBox Width="120" SelectionChanged="ComboBox_SelectionChanged"
+						  SelectedIndex="{Binding Path=DeviceType, Source={x:Static prop:Settings.Default}}">
+					<ComboBoxItem Content="3DS"/>
+					<ComboBoxItem Content="android"/>
+				</ComboBox>
+			</ToolBar>
             <TabControl>
                 <TabItem Header="基本設定">
                     <Grid>

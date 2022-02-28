@@ -19,11 +19,13 @@ namespace DQ7
 		public ObservableCollection<PartyMember> Party { get; set; } = new ObservableCollection<PartyMember>();
 		public ObservableCollection<PassingSlate> PassingSlates { get; set; } = new ObservableCollection<PassingSlate>();
 
+		private readonly uint[] mDevice = { 0, 0x10,};
+
 		public DataContext()
 		{
 			for (uint i = 0; i < 6; i++)
 			{
-				Charactors.Add(new Charactor(0x0C80 + i * 0x01EC));
+				Charactors.Add(new Charactor(0x0C80 + i * (Properties.Settings.Default.DeviceType == 0 ? 0x01ECU : 0x1F0)));
 			}
 
 			BagItem item = null;
@@ -41,14 +43,14 @@ namespace DQ7
 
 			foreach (var monster in Info.Instance().Monsters)
 			{
-				if (monster.ID != 0) Monsters.Add(new MonsterBook(0x1854 + (monster.ID - 1) * 8) { Name = monster.Name });
+				if (monster.ID != 0) Monsters.Add(new MonsterBook(0x1854 + mDevice[Properties.Settings.Default.DeviceType] + (monster.ID - 1) * 8) { Name = monster.Name });
 				if (monster.Passing) PassingSlateMonsters.Add(monster);
 				if (monster.Stamp) StampMonsters.Add(monster);
 			}
 
 			for (uint i = 0; i < Util.MonsterStampCount; i++)
 			{
-				MonsterStamps.Add(new MonsterStamp(0x2E06 + i * 2));
+				MonsterStamps.Add(new MonsterStamp(0x2E06 + mDevice[Properties.Settings.Default.DeviceType] + i * 2));
 			}
 
 			foreach (var place in Info.Instance().ParkPlaces)
@@ -68,7 +70,7 @@ namespace DQ7
 
 			for (uint i = 0; i < Util.PassingSlateCount; i++)
 			{
-				uint address = 0x32D0 + i * 44;
+				uint address = 0x32D0 + mDevice[Properties.Settings.Default.DeviceType] + i * 44;
 				if (SaveData.Instance().ReadNumber(address, 1) == 0) break;
 				PassingSlates.Add(new PassingSlate(address));
 			}
@@ -188,12 +190,12 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x1844, 4);
+				return SaveData.Instance().ReadNumber(0x1844 + mDevice[Properties.Settings.Default.DeviceType], 4);
 			}
 
 			set
 			{
-				Util.WriteNumber(0x1844, 4, value, 0, 9999999);
+				Util.WriteNumber(0x1844 + mDevice[Properties.Settings.Default.DeviceType], 4, value, 0, 9999999);
 			}
 		}
 
@@ -201,12 +203,12 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x1840, 4);
+				return SaveData.Instance().ReadNumber(0x1840 + mDevice[Properties.Settings.Default.DeviceType], 4);
 			}
 
 			set
 			{
-				Util.WriteNumber(0x1840, 4, value, 0, 9999999);
+				Util.WriteNumber(0x1840 + mDevice[Properties.Settings.Default.DeviceType], 4, value, 0, 9999999);
 			}
 		}
 
@@ -214,12 +216,12 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x1848, 4);
+				return SaveData.Instance().ReadNumber(0x1848 + mDevice[Properties.Settings.Default.DeviceType], 4);
 			}
 
 			set
 			{
-				Util.WriteNumber(0x1848, 4, value, 0, 9999999);
+				Util.WriteNumber(0x1848 + mDevice[Properties.Settings.Default.DeviceType], 4, value, 0, 9999999);
 			}
 		}
 
@@ -227,16 +229,16 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x3250, 4) / 30 / 3600;
+				return SaveData.Instance().ReadNumber(0x3250 + mDevice[Properties.Settings.Default.DeviceType], 4) / 30 / 3600;
 			}
 
 			set
 			{
 				if (value < 0) value = 0;
 				if (value > 999) value = 999;
-				uint time = SaveData.Instance().ReadNumber(0x3250, 4);
+				uint time = SaveData.Instance().ReadNumber(0x3250 + mDevice[Properties.Settings.Default.DeviceType], 4);
 				time %= (30 * 3600);
-				SaveData.Instance().WriteNumber(0x3250, 4, value * 30 * 3600 + time);
+				SaveData.Instance().WriteNumber(0x3250 + mDevice[Properties.Settings.Default.DeviceType], 4, value * 30 * 3600 + time);
 			}
 		}
 
@@ -244,16 +246,16 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x3250, 4) / 30 / 60 % 60;
+				return SaveData.Instance().ReadNumber(0x3250 + mDevice[Properties.Settings.Default.DeviceType], 4) / 30 / 60 % 60;
 			}
 
 			set
 			{
 				if (value < 0) value = 0;
 				if (value > 59) value = 59;
-				uint time = SaveData.Instance().ReadNumber(0x3250, 4);
+				uint time = SaveData.Instance().ReadNumber(0x3250 + mDevice[Properties.Settings.Default.DeviceType], 4);
 				time /= (30 * 3600);
-				SaveData.Instance().WriteNumber(0x3250, 4, time * 30 * 3600 + value * 30 * 60);
+				SaveData.Instance().WriteNumber(0x3250 + mDevice[Properties.Settings.Default.DeviceType], 4, time * 30 * 3600 + value * 30 * 60);
 			}
 		}
 
@@ -261,12 +263,12 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadBit(0x31A0, 1);
+				return SaveData.Instance().ReadBit(0x31A0 + mDevice[Properties.Settings.Default.DeviceType], 1);
 			}
 
 			set
 			{
-				SaveData.Instance().WriteBit(0x31A0, 1, value);
+				SaveData.Instance().WriteBit(0x31A0 + mDevice[Properties.Settings.Default.DeviceType], 1, value);
 			}
 		}
 
@@ -274,12 +276,12 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(0x3F14, 1);
+				return SaveData.Instance().ReadNumber(0x3F14 + mDevice[Properties.Settings.Default.DeviceType], 1);
 			}
 
 			set
 			{
-				Util.WriteNumber(0x3F14, 1, value, 0, 24);
+				Util.WriteNumber(0x3F14 + mDevice[Properties.Settings.Default.DeviceType], 1, value, 0, 24);
 			}
 		}
 
@@ -287,12 +289,12 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadBit(0x4198, 0);
+				return SaveData.Instance().ReadBit(0x4198 + mDevice[Properties.Settings.Default.DeviceType], 0);
 			}
 
 			set
 			{
-				SaveData.Instance().WriteBit(0x4198, 0, value);
+				SaveData.Instance().WriteBit(0x4198 + mDevice[Properties.Settings.Default.DeviceType], 0, value);
 			}
 		}
 

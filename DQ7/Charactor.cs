@@ -16,6 +16,12 @@ namespace DQ7
 		public Charactor(uint address)
 		{
 			mAddress = address;
+
+			if (Properties.Settings.Default.DeviceType == 1)
+			{
+				address += 4;
+			}
+
 			for (uint i = 0; i < 12; i++)
 			{
 				Items.Add(new CharactorItem(address + 0x0180 + i * 4));
@@ -43,13 +49,28 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadText(mAddress + 0x01B0, 12);
+				if (Properties.Settings.Default.DeviceType == 0)
+				{
+					return SaveData.Instance().ReadText(mAddress + 0x01B0, 12);
+				}
+				else
+				{
+					return SaveData.Instance().ReadText(mAddress + 0x01B4, 12);
+				}
 			}
 
 			set
 			{
-				SaveData.Instance().WriteText(mAddress + 0x01B0, 12, value);
-				SaveData.Instance().WriteText(mAddress + 0x01CA, 12, value);
+				if (Properties.Settings.Default.DeviceType == 0)
+				{
+					SaveData.Instance().WriteText(mAddress + 0x01B0, 12, value);
+					SaveData.Instance().WriteText(mAddress + 0x01CA, 12, value);
+				}
+				else
+				{
+					SaveData.Instance().WriteText(mAddress + 0x01B4, 12, value);
+					SaveData.Instance().WriteText(mAddress + 0x01CE, 12, value);
+				}
 			}
 		}
 

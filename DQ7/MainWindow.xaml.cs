@@ -15,6 +15,11 @@ namespace DQ7
 			InitializeComponent();
 		}
 
+		private void Window_Closed(object sender, EventArgs e)
+		{
+			Properties.Settings.Default.Save();
+		}
+
 		private void Window_PreviewDragOver(object sender, DragEventArgs e)
 		{
 			e.Handled = e.Data.GetDataPresent(DataFormats.FileDrop);
@@ -191,6 +196,11 @@ namespace DQ7
 			{
 				place.Exist = false;
 			}
+		}
+
+		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Init();
 		}
 
 		private void ButtonCharactorItem_Click(object sender, RoutedEventArgs e)

@@ -2,9 +2,6 @@
 {
 	class Util
 	{
-		public const uint BaseAddress = 0;
-		public const uint BlockSize = 0x4FD0;
-
 		public const uint BagItemCount = 536;
 
 		public const uint PartyMemberCount = 6;

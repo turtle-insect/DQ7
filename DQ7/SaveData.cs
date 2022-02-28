@@ -8,7 +8,6 @@ namespace DQ7
 		private String mFileName = null;
 		private Byte[] mBuffer = null;
 		private readonly System.Text.Encoding mEncode = System.Text.Encoding.UTF8;
-		public uint Adventure { private get; set; } = 0;
 
 		private SaveData()
 		{}
@@ -171,7 +170,7 @@ namespace DQ7
 		private uint CheckSum()
 		{
 			int result = 0;
-			for (uint i = 0x10; i < Util.BlockSize; i++)
+			for (uint i = 0x10; i < mBuffer.Length; i++)
 			{
 				result += (SByte)ReadNumber(i, 1);
 			}
@@ -180,7 +179,7 @@ namespace DQ7
 
 		private uint CalcAddress(uint address)
 		{
-			return Util.BaseAddress + Adventure * Util.BlockSize + address;
+			return address;
 		}
 
 		private void Backup()
