@@ -228,7 +228,7 @@ namespace DQ7
 
 			set
 			{
-				Util.WriteNumber(mAddress + 0x0014, 4, value, 1, 9999999);
+				Util.WriteNumber(mAddress + 0x0014, 4, value, 0, 0xFFFFFF);
 			}
 		}
 	}

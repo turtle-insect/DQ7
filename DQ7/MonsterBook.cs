@@ -29,12 +29,12 @@ namespace DQ7
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mAddress, 2);
+				return SaveData.Instance().ReadNumber(mAddress + 2, 2);
 			}
 
 			set
 			{
-				Util.WriteNumber(mAddress, 2, value, 0, 999);
+				Util.WriteNumber(mAddress + 2, 2, value, 0, 999);
 			}
 		}
 
