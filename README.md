@@ -14,7 +14,7 @@ http://www.dragonquest.jp/dq7/
 
 # Build環境
 * Windows 10(64bit)
-* Visual Studio 2017
+* Visual Studio 2022
 
 # 編集時の手順
    * 結果、以下が取得可能
