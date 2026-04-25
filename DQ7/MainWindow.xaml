@@ -37,7 +37,7 @@
 				<Button Width="32" Height="32" Click="ToolBarFileSave_Click" ToolTip="保存">
 					<Image Source="{StaticResource Save}"/>
 				</Button>
-				<TextBox Text="device"/>
+				<Label Content="device" VerticalAlignment="Center"/>
 				<ComboBox Width="120" SelectionChanged="ComboBox_SelectionChanged"
 						  SelectedIndex="{Binding Path=DeviceType, Source={x:Static prop:Settings.Default}}">
 					<ComboBoxItem Content="3DS"/>
