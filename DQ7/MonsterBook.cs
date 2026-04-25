@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DQ7
+﻿namespace DQ7
 {
 	class MonsterBook
 	{
